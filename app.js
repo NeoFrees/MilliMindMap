@@ -30,6 +30,12 @@ let selectedForConnect = null;
 let editingNodeId = null;
 let toastTimeout = null;
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(error => console.warn('Service worker registration failed', error));
+  });
+}
+
 function loadState(){
   const raw = localStorage.getItem(storageKey);
   if(raw){

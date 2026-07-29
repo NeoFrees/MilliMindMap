@@ -1,0 +1,12 @@
+{
+  "name": "millimindmap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional business finance mind-map for planning and profit rollover",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
