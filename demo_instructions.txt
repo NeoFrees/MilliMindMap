@@ -1,0 +1,1 @@
+Open index.html in a modern browser (Chrome/Edge/Firefox). The app stores data in localStorage (key: milliNodes_v1). To reset, use the Clear button or clear localStorage for the site.

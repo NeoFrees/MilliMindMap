@@ -1,0 +1,5 @@
+# Ignore node modules if added later
+node_modules/
+.DS_Store
+dist/
+.env
