@@ -1,5 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Demo](https://img.shields.io/badge/demo-live-green)](https://neofrees.github.io/MilliMindMap/)
 
+![hero](assets/hero.svg)
+
 # MilliMindMap
 
 A polished business-finance mind-map for planning profit centers and rolling over earnings. Build connected revenue and expense nodes, visualize flows, and manage retained earnings on a single professional canvas.
