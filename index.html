@@ -1,26 +1,115 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>MilliMindMap</title>
+  <title>MilliMindMap · Business Finance</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>MilliMindMap</h1>
-    <div id="controls">
-      <button id="addNode">Add Node</button>
-      <button id="connectToggle">Connect</button>
-      <button id="clearBtn">Clear</button>
-      <span id="total">Total: $0.00</span>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MilliMindMap</p>
+        <h1>Business Mind-Map Finance</h1>
+        <p class="tagline">Build, connect, and rollover your profit centers with a professional visual planning canvas.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="exportBtn">Export</button>
+        <button id="importBtn">Import</button>
+        <button id="clearBtn">Reset Canvas</button>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <aside class="panel sidebar">
+        <section class="panel-section summary-panel">
+          <h2>Financial Overview</h2>
+          <div class="metrics-grid">
+            <article class="metric-card revenue">
+              <span>Revenue</span>
+              <strong id="revenueValue">$0.00</strong>
+            </article>
+            <article class="metric-card expense">
+              <span>Expenses</span>
+              <strong id="expenseValue">$0.00</strong>
+            </article>
+            <article class="metric-card profit">
+              <span>Net Profit</span>
+              <strong id="profitValue">$0.00</strong>
+            </article>
+            <article class="metric-card retained">
+              <span>Retained Earnings</span>
+              <strong id="retainedValue">$0.00</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel-section controller-panel">
+          <h2>Controls</h2>
+          <div class="field-row">
+            <label for="periodSelect">Current Period</label>
+            <select id="periodSelect"></select>
+          </div>
+          <button id="addNode">Add Business Item</button>
+          <button id="connectToggle">Connect Nodes</button>
+          <button id="rolloverBtn">Rollover Profit</button>
+        </section>
+
+        <section class="panel-section legend-panel">
+          <h2>Legend</h2>
+          <ul class="legend-list">
+            <li><span class="tag revenue"></span>Revenue</li>
+            <li><span class="tag expense"></span>Expense</li>
+            <li><span class="tag asset"></span>Asset</li>
+            <li><span class="tag liability"></span>Liability</li>
+            <li><span class="tag retained"></span>Retained Earnings</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="panel canvas-panel">
+        <div class="canvas-header">
+          <div>
+            <h2>Business Map</h2>
+            <p>Drag nodes, group revenue streams, expense centers, and track rollover capital.</p>
+          </div>
+          <span id="canvasHint">Click a node to edit details, drag to reposition.</span>
+        </div>
+        <div id="canvas" class="canvas">
+          <svg id="links"></svg>
+        </div>
+      </main>
     </div>
-  </header>
-  <main>
-    <div id="canvas">
-      <svg id="links"></svg>
+  </div>
+
+  <div id="nodeModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <h3 id="nodeModalTitle">Add Business Item</h3>
+      <form id="nodeForm">
+        <label>Title<span>*</span><input id="nodeTitle" type="text" required /></label>
+        <label>Amount<span>*</span><input id="nodeAmount" type="number" step="0.01" min="0" value="0" required /></label>
+        <label>Type<span>*</span>
+          <select id="nodeType">
+            <option value="Revenue">Revenue</option>
+            <option value="Expense">Expense</option>
+            <option value="Asset">Asset</option>
+            <option value="Liability">Liability</option>
+            <option value="Retained">Retained</option>
+          </select>
+        </label>
+        <label>Notes<textarea id="nodeNotes" rows="4" placeholder="Optional description"></textarea></label>
+        <div class="form-actions">
+          <button type="submit" id="saveNodeBtn">Save</button>
+          <button type="button" id="cancelNodeBtn">Cancel</button>
+          <button type="button" id="deleteNodeBtn" class="danger hidden">Delete</button>
+        </div>
+      </form>
     </div>
-  </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
   <script src="app.js"></script>
 </body>
 </html>
